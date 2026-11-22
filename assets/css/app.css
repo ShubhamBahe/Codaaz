@@ -9842,3 +9842,23 @@ Pagination
         padding-bottom: 0;
     }
 }
+
+/*-------------------------
+    Inner pages header fix
+    The banner used a fixed -80px margin to slide under the header, but the header is taller
+    than 80px between 1200px and 1599px, which left a white strip above the banner.
+    Letting the header float over the banner makes it work at every screen width.
+-------------------------*/
+@supports selector(:has(*)) {
+    .axil-header:has(+ .breadcrumb-banner) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+
+    .axil-header + .breadcrumb-banner {
+        margin-top: 0;
+    }
+}
